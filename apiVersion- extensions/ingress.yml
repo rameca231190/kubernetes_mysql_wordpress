@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress 
+spec:
+  tls:
+  - hosts:
+    - minikube.io
+    secretName: foo-secret      
+  rules:
+  - host: minikube.io
+    http:
+      paths:
+      - path: /*        
+        backend: 
+          serviceName: wordpress
+          servicePort: 80
